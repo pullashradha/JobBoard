@@ -1,0 +1,38 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/forms.css" type="text/css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/accounts/new">Create Account</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1>Create a New Category</h1>
+    <form class="form-group" action="/categories" method="post">
+      <h2>Category Name<input required type="text" name="category-name" class="form-control"></h2>
+      <button type="btn" class="btn btn-success">Create Category</button>
+    </form>
+  </div>
+</body>

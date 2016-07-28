@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  font-family: serif;
+  color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/Mountain.jpg");
+  background-size: cover;
+}
+
+.navbar-inverse {
+  background-color: #000000;
+  background: rgba(0,0,0,0.25);
+  border: rgba(0,0,0,0.25);
+}
+
+.navbar-inverse a {
+  padding-top: 35px;
+  font-size: 18pt;
+}
+
+.index-jumbotron {
+  background: rgba(0,0,0,0.25);
+  color: #FFFFFF;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin-top: 300px;
+  margin-right: 75px;
+  margin-left: 75px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.index-jumbotron .btn-success{
+  background: rgba(0,0,0,0.25);
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  margin-top: 100px;
+}
+x

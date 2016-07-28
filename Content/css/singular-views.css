@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  font-family: serif;
+  color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/Mountain.jpg");
+  background-size: cover;
+}
+
+.navbar-inverse {
+  background-color: #000000;
+  background: rgba(0,0,0,0.25);
+  border: rgba(0,0,0,0.25);
+}
+
+.navbar-inverse a {
+  padding-top: 35px;
+  font-size: 18pt;
+}
+
+.jumbotron {
+  background: rgba(0,0,0,0.25);
+  color: #FFFFFF;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 75px;
+  margin-bottom: 150px;
+}
+
+.jumbotron h1 {
+  text-align: center;
+  font-family: serif;
+  color: #FFFFFF;
+  font-size: 50pt;
+  font-weight: bold;
+  margin-bottom: 100px;
+}
+
+.jumbotron ul {
+  list-style: none;
+  text-align: center;
+}
+
+.h2-headers {
+  text-align: center;
+  margin-top: 35px;
+}
+
+form {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+#last-input {
+  margin-bottom: 50px;
+}
+
+input, textarea, select {
+  margin-top: 15px;
+  color: #000000;
+}
+
+option {
+  color: #000000;
+}
+
+.jumbotron .btn-success, .btn-danger {
+  background: rgba(0,0,0,0.25);
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+}
+
+.jumbotron .btn-success:hover {
+  background-color: green;
+}
+
+.btn-primary {
+  font-size: 30px;
+  width: 550px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.job-info {
+  border: 5px solid #0000EE;
+  background-color: white;
+  margin: 10px;
+  color: black;
+  padding: 5px;
+}
+.job-info h1 {
+  text-align: center;
+}
+
+.keyword-search {
+  font-size: 15pt;
+  margin-top: 15px;
+  background: rgba(0,0,0,0.25);
+}
+
+#list-names {
+  font-size: 20pt;
+}
+
+#account-update {
+  margin-top: -50px;
+}

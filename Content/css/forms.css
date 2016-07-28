@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  font-family: serif;
+  color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/Mountain.jpg");
+  background-size: cover;
+}
+
+.navbar-inverse {
+  background-color: #000000;
+  background: rgba(0,0,0,0.25);
+  border: rgba(0,0,0,0.25);
+}
+
+.navbar-inverse a {
+  padding-top: 35px;
+  font-size: 18pt;
+}
+
+.jumbotron {
+  background: rgba(0,0,0,0.25);
+  color: #FFFFFF;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 75px;
+  margin-bottom: 150px;
+}
+
+.jumbotron h1 {
+  text-align: center;
+  font-family: serif;
+  color: #FFFFFF;
+  font-size: 50pt;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+form {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+input, textarea, select {
+  margin-top: 15px;
+  color: #000000;
+}
+
+option {
+  color: #000000;
+}
+
+.jumbotron .btn-success{
+  background: rgba(0,0,0,0.25);
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  margin-top: 100px;
+}
+
+.jumbotron .btn-success:hover {
+  background-color: green;
+}
+
+p {
+  margin-left: 50px;
+  margin-right: 40px;
+}

@@ -1,0 +1,66 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/singular-views.css" type="text/css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/accounts/new">Create Account</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1>@Model.GetFirstName() @Model.GetLastName()</h1>
+    <a href="/jobmatches/@Model.GetId()" class="btn btn-primary" role="button">View Job Matches By Resume</a>
+    <h2 class="h2-headers" id="account-update">Update Your Information</h2>
+    <!-- Maybe put the update form in a modal? -->
+    <form class="from-group" action="/accounts/@Model.GetId()/@Model.GetFirstName()/updated" method="post">
+      <input type="hidden" name="_method" value="PATCH">
+      <div class="row">
+        <h2 class="col-xs-6">First Name<input type="text" name="account-first-name" class="form-control" value="@Model.GetFirstName()"></h2>
+        <h2 class="col-xs-6">Last Name<input type="text" name="account-last-name" class="form-control" value="@Model.GetLastName()"></h2>
+      </div>
+      <div class="row">
+        <h2 class="col-xs-6">Email<input type="text" name="account-email" class="form-control" value="@Model.GetEmail()"></h2>
+        <h2 class="col-xs-6">Phone<input type="text" name="account-phone" class="form-control" value="@Model.GetPhone()"></h2>
+      </div>
+      <h2>Education
+        <select class="form-control" name="account-education" value="@Model.GetEducation()">
+          <option value="1">High School Degree</option>
+          <option value="2">Some College</option>
+          <option value="3">Associate's Degree</option>
+          <option value="4">Bachelor's Degree</option>
+          <option value="5">Master's Degree</option>
+          <option value="6">Ph.D</option>
+        </select>
+      </h2>
+      <h2>Resume<textarea required rows="5" cols="30" type="text" name="account-resume" class="form-control">@Model.GetResume()</textarea></h2>
+      <h2 id="last-input">Username<input type="text" name="account-username" class="form-control" value="@Model.GetUsername()"></h2>
+      <button type="submit" class="btn btn-success">Update Account</button>
+    </form>
+    <form class="form-group" action="/accounts/@Model.GetId()/@Model.GetFirstName()/deleted" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" name="button" class="btn btn-danger">Delete Account</button>
+    </form>
+
+  </div>
+</body>

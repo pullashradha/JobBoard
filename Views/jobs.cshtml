@@ -1,0 +1,62 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/lists.css" type="text/css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/accounts/new">Create Account</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1>Jobs</h1>
+    <h2 class="h2-headers">Find job listings on Indeed</h2>
+    <form action='http://www.indeed.com/jobs' target ="_blank" METHOD='GET' id="indeed-search">
+      <table cellspacing='0' style='font-family:arial'>
+        <tr><td style='font-size:16px;color:#FF6600'><b>Job Search</b></td><td></td></tr>
+        <tr>
+          <td><input required name='q' value='' size='25'></td>
+          <td><input required type='submit' value='Find Jobs'></td>
+        </tr>
+        <tr>
+          <td valign='top' style='font-size:10px'>
+            job title, keywords, company, location
+          </td>
+          <td colspan='1'  valign='top' style='font-size:10px;padding:0px;margin:0px;border:0px;width:116px;'>
+            <a href='http://www.indeed.com'>
+              <img align='right' border='0' src='http://www.indeed.com/images/poweredbyindeed.gif'>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <h2 class="h2-headers">All Jobs</h2>
+    @foreach (var job in Model)
+    {
+      <ul>
+        <li><a href="/jobs/@job.GetId()/@job.GetTitle()" id="list-names">@job.GetTitle()</a></li>
+      </ul>
+    }
+    <a href="/jobs/new" class="btn btn-success" role="button">Create New Job</a>
+  </div>
+</body>

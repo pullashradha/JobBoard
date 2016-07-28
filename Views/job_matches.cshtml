@@ -1,0 +1,41 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/lists.css" type="text/css">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="/Content/js/bootstrap.min.js"></script>
+<title>Ranked Jobs</title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/accounts/new">Create Account</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1>Ranked Jobs</h1>
+    <ul>
+      @foreach(var job in Model.Keys)
+      {
+        <li><a href="/jobs/@job.GetId()/@job.GetTitle()" id="list-names">@job.GetTitle()</a>&nbsp Score: @Model[job]</li>
+      }
+    </ul>
+  </div>
+</body>

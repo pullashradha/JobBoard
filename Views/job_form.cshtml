@@ -1,0 +1,69 @@
+<head>
+  <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/Content/css/forms.css" type="text/css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/companies">Companies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/accounts/new">Create Account</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    @if(Model["allCompanies"].Count >0 && Model["allCategories"].Count >0)
+    {
+      <h1>Create a New Job Listing</h1>
+      <form class="from-group" action="/jobs" method="post">
+        <h2>Title<input required type="text" name="job-title" class="form-control"></h2>
+        <h2>Description<textarea required type="text" name="job-description" class="form-control"></textarea></h2>
+        <h2>Salary<input required type="text" name="job-salary" class="form-control"></h2>
+        <div class="row">
+          <h2 class="col-xs-6">Company
+            <select required name="company" class="form-control">
+              @foreach(var company in Model["allCompanies"])
+              {
+                <option value=@company.GetId()>@company.GetName()</option>
+              }
+            </select>
+          </h2>
+          <h2 class="col-xs-6">Category
+            <select required name="category" class="form-control">
+              @foreach(var category in Model["allCategories"])
+              {
+                <option value=@category.GetId()>@category.GetName()</option>
+              }
+            </select>
+          </h2>
+        </div>
+        <button type="btn" class="btn btn-success">Create Job</button>
+      </form>
+    }
+    else
+    {
+      <p>
+        Sorry but either no companies or no categories have been added yet and that must be done before jobs can be posted.
+      </p>
+      <a href="/categories/new" class="btn btn-success" role="button">Create New Category</a>
+      <a href="/companies/new" class="btn btn-success" role="button">Create New Company</a>
+    }
+  </div>
+</body>

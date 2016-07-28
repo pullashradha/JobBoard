@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  font-family: serif;
+  color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/Mountain.jpg");
+  background-size: cover;
+}
+
+.navbar-inverse {
+  background-color: #000000;
+  background: rgba(0,0,0,0.25);
+  border: rgba(0,0,0,0.25);
+}
+
+.navbar-inverse a {
+  padding-top: 35px;
+  font-size: 18pt;
+}
+
+h1 {
+  text-align: center;
+  font-family: serif;
+  color: #FFFFFF;
+  font-size: 50pt;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 300px;
+}
+
+.btn-success {
+  background: rgba(0,0,0,0.25);
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+#new-account {
+  width: 650px;
+}
