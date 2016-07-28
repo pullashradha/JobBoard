@@ -2,7 +2,7 @@
 
 #### Team Project for Epicodus, 07/29/2016
 
-#### By Sami Al-Jamal & Shradha Pulla & Charlie Baxter & Charlie Ewel
+#### By Shradha Pulla & Sami Al-Jamal & Charlie Baxter & Charlie Ewel
 
 ## Description
 
@@ -135,10 +135,10 @@ Contact Epicodus for support in running this program.
 
 ## Links
 
-Git Hub Repository: https://github.com/SamiAljamal/Csharp_GroupProject
+Git Hub Repository: https://github.com/pullashradha/JobBoard
 
 ## License
 
 *This software is licensed under the Microsoft ASP.NET license.*
 
-Copyright (c) 2016 Sami Al-Jamal & Shradha Pulla & Charlie Baxter & Charlie Ewel
+Copyright (c) 2016 Shradha Pulla & Sami Al-Jamal & Charlie Baxter & Charlie Ewel
