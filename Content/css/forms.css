@@ -13,6 +13,8 @@ body {
   background-size: cover;
 }
 
+/*--------------------------------------Navbar Styling--------------------------------------*/
+
 .navbar-inverse {
   background-color: #000000;
   background: rgba(0,0,0,0.25);
@@ -23,6 +25,8 @@ body {
   padding-top: 35px;
   font-size: 18pt;
 }
+
+/*--------------------------------------Content Styling--------------------------------------*/
 
 .jumbotron {
   background: rgba(0,0,0,0.25);

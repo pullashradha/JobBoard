@@ -19,7 +19,7 @@ namespace JobBoard
       Assert.Equal(0, result);
     }
     [Fact]
-    public void Test_Equal_ReturnsTrueIfCompanysAreTheSame()
+    public void Test_Equal_ReturnsTrueIfCompaniesAreTheSame()
     {
       Company firstCompany = new Company("Company");
       Company secondCompany = new Company("Company");
@@ -30,9 +30,9 @@ namespace JobBoard
     {
       Company testCompany = new Company("Company");
       testCompany.Save();
-      List<Company> testCompanys = new List<Company>{testCompany};
-      List<Company> resultCompanys = Company.GetAll();
-      Assert.Equal(testCompanys, resultCompanys);
+      List<Company> testCompanies = new List<Company>{testCompany};
+      List<Company> resultCompanies = Company.GetAll();
+      Assert.Equal(testCompanies, resultCompanies);
     }
     [Fact]
     public void Test_Save_AssignsIdToCompany()

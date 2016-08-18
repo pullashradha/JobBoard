@@ -43,7 +43,7 @@ namespace JobBoard
         }
         else
         {
-            return View["username_taken.cshtml"];
+          return View["username_taken.cshtml"];
         }
       };
       Post["/keyword"]=_=>{
@@ -51,51 +51,40 @@ namespace JobBoard
         newJob.Save();
         return View["result.cshtml", newJob];
       };
-
       Get["/jobmatches/{id}"]=parameters=>{
         Account selectedAccount = Account.Find(parameters.id);
         Dictionary<Job, int> rankedJobs = selectedAccount.GetRankedJobs();
         return View["job_matches.cshtml", rankedJobs];
       };
-
       Get["/jobs/{id}/keywords"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Job selectedJob = Job.Find(parameters.id);
         Category selectedCategory = Category.Find(selectedJob.GetCategoryId());
         Company selectedCompany = Company.Find(selectedJob.GetCompanyId());
-
         Dictionary<string, int> categoryWords = selectedCategory.GetPopularWords(20);
         Dictionary<string, int> companyWords = selectedCompany.GetPopularWords(20);
-
         model.Add("categoryWords", categoryWords);
         model.Add("companyWords", companyWords);
         model.Add("job", selectedJob);
-
         return View["jobs_keywords.cshtml", model];
       };
-
       Post["/jobs/{id}/keywordinfo"]=parameters=> {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Job selectedJob = Job.Find(parameters.id);
         Category selectedCategory = Category.Find(selectedJob.GetCategoryId());
         Company selectedCompany = Company.Find(selectedJob.GetCompanyId());
-
         string keyword = Request.Form["keyword"];
-
         List<Job> categoryJobs = selectedCategory.GetJobs();
         List<Job> categoryMatchedJobs = selectedCategory.FindJobs(keyword);
         List<Job> companyJobs = selectedCompany.GetJobs();
         List<Job> companyMatchedJobs = selectedCompany.FindJobs(keyword);
-
         model.Add("keyword", keyword);
         model.Add("categoryJobs", categoryJobs);
         model.Add("categoryMatchedJobs", categoryMatchedJobs);
         model.Add("companyJobs", companyJobs);
         model.Add("companyMatchedJobs", companyMatchedJobs);
-
         return View["keyword_info.cshtml", model];
       };
-
       Get ["/accounts/{id}/{first_name}"] = parameters => {
         Account selectedAccount = Account.Find(parameters.id);
         return View ["account.cshtml", selectedAccount];
@@ -216,7 +205,6 @@ namespace JobBoard
         Dictionary<Job, int> rankedJobs = selectedAccount.GetRankedJobs();
         return View ["ranked.cshtml", rankedJobs];
       };
-
       Delete["/deleteall"]=_=> {
         Account.DeleteAll();
         Category.DeleteAll();

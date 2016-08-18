@@ -16,7 +16,6 @@ namespace JobBoard
     private int _education;
     private string _resume;
     private string _username;
-
     public Account (string firstName, string lastName, string email, string phone, int education, string resume, string username, int id = 0)
     {
       _id = id;
@@ -29,8 +28,7 @@ namespace JobBoard
       _username = username.Trim();
 
     }
-
-    public override bool Equals(System.Object otherAccount)
+    public override bool Equals (System.Object otherAccount)
     {
       if (!(otherAccount is Account))
       {
@@ -50,12 +48,10 @@ namespace JobBoard
         return (idEquality && firstNameEquality && lastNameEquality && emailEquality && phoneEquality && educationEquality && resumeEquality && usernameEquality);
       }
     }
-
     public int GetId()
     {
       return _id;
     }
-
     public string GetFirstName()
     {
       return _firstName;
@@ -84,48 +80,42 @@ namespace JobBoard
     {
       return _username;
     }
-
-    public void SetFirstName(string newFirstName)
+    public void SetFirstName (string newFirstName)
     {
       _firstName = newFirstName;
     }
-    public void SetLastName(string newLastName)
+    public void SetLastName (string newLastName)
     {
       _lastName = newLastName;
     }
-    public void SetEmail(string newEmail)
+    public void SetEmail (string newEmail)
     {
       _email = newEmail;
     }
-    public void SetPhone(string newPhone)
+    public void SetPhone (string newPhone)
     {
       _phone = newPhone;
     }
-    public void SetEducation(int newEducation)
+    public void SetEducation (int newEducation)
     {
       _education = newEducation;
     }
-    public void SetResume(string newResume)
+    public void SetResume (string newResume)
     {
       _resume = newResume;
     }
-    public void SetUsername(string newUsername)
+    public void SetUsername (string newUsername)
     {
       _username = newUsername;
     }
-
-
     public static List<Account> GetAll()
     {
       List<Account> allAccounts = new List<Account>{};
-
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
       conn.Open();
-
-      SqlCommand cmd = new SqlCommand("SELECT * FROM accounts;", conn);
+      SqlCommand cmd = new SqlCommand ("SELECT * FROM accounts;", conn);
       rdr = cmd.ExecuteReader();
-
       while(rdr.Read())
       {
         int accountId = rdr.GetInt32(0);
@@ -136,11 +126,9 @@ namespace JobBoard
         int accountEducation = rdr.GetInt32(5);
         string accountResume = rdr.GetString(6);
         string accountUsername = rdr.GetString(7);
-
         Account newAccount = new Account(accountFirstName, accountLastName, accountEmail, accountPhone, accountEducation, accountResume, accountUsername, accountId);
         allAccounts.Add(newAccount);
       }
-
       if (rdr != null)
       {
         rdr.Close();
@@ -151,52 +139,41 @@ namespace JobBoard
       }
       return allAccounts;
     }
-
     public void Save()
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr;
       conn.Open();
-
-      SqlCommand cmd = new SqlCommand("INSERT INTO accounts (first_name, last_name, email, phone, education, resume, username) OUTPUT INSERTED.id VALUES (@FirstName, @LastName, @Email, @Phone, @Education, @Resume, @Username);", conn);
-
+      SqlCommand cmd = new SqlCommand ("INSERT INTO accounts (first_name, last_name, email, phone, education, resume, username) OUTPUT INSERTED.id VALUES (@FirstName, @LastName, @Email, @Phone, @Education, @Resume, @Username);", conn);
       SqlParameter firstNameParameter = new SqlParameter();
       firstNameParameter.ParameterName = "@FirstName";
       firstNameParameter.Value = this.GetFirstName().Trim();
       cmd.Parameters.Add(firstNameParameter);
-
       SqlParameter lastNameParameter = new SqlParameter();
       lastNameParameter.ParameterName = "@LastName";
       lastNameParameter.Value = this.GetLastName().Trim();
       cmd.Parameters.Add(lastNameParameter);
-
       SqlParameter emailParameter = new SqlParameter();
       emailParameter.ParameterName = "@Email";
       emailParameter.Value = this.GetEmail().Trim();
       cmd.Parameters.Add(emailParameter);
-
       SqlParameter phoneParameter = new SqlParameter();
       phoneParameter.ParameterName = "@Phone";
       phoneParameter.Value = this.GetPhone().Trim();
       cmd.Parameters.Add(phoneParameter);
-
       SqlParameter educationParameter = new SqlParameter();
       educationParameter.ParameterName = "@Education";
       educationParameter.Value = this.GetEducation();
       cmd.Parameters.Add(educationParameter);
-
       SqlParameter resumeParameter = new SqlParameter();
       resumeParameter.ParameterName = "@Resume";
       resumeParameter.Value = this.GetResume().Trim();
       cmd.Parameters.Add(resumeParameter);
-
       SqlParameter usernameParameter = new SqlParameter();
       usernameParameter.ParameterName = "@Username";
       usernameParameter.Value = this.GetUsername().Trim();
       cmd.Parameters.Add(usernameParameter);
-
       rdr = cmd.ExecuteReader();
-
       while(rdr.Read())
       {
         this._id = rdr.GetInt32(0);
@@ -210,22 +187,18 @@ namespace JobBoard
         conn.Close();
       }
     }
-
-    public static Account Find(int id)
+    public static Account Find (int id)
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
       conn.Open();
-
-      SqlCommand cmd = new SqlCommand("SELECT * FROM accounts WHERE id = @AccountId;", conn);
+      SqlCommand cmd = new SqlCommand ("SELECT * FROM accounts WHERE id = @AccountId;", conn);
       SqlParameter accountIdParameter = new SqlParameter();
       accountIdParameter.ParameterName = "@AccountId";
       accountIdParameter.Value = id.ToString();
       cmd.Parameters.Add(accountIdParameter);
       rdr = cmd.ExecuteReader();
-
       List<Account> foundAccounts = new List<Account>{};
-
       while(rdr.Read())
       {
         int foundAccountId = rdr.GetInt32(0);
@@ -239,7 +212,6 @@ namespace JobBoard
         Account foundAccount = new Account(foundAccountFirstName, foundAccountLastName, foundAccountEmail, foundAccountPhone, foundAccountEducation, foundAccountResume, foundAccountUsername, foundAccountId);
         foundAccounts.Add(foundAccount);
       }
-
       if (rdr != null)
       {
         rdr.Close();
@@ -250,27 +222,22 @@ namespace JobBoard
       }
       return foundAccounts[0];
     }
-
-    public static int FindUserId(string username)
+    public static int FindUserId (string username)
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
       conn.Open();
-
-      SqlCommand cmd = new SqlCommand("SELECT * FROM accounts WHERE username = @AccountUsername;", conn);
+      SqlCommand cmd = new SqlCommand ("SELECT * FROM accounts WHERE username = @AccountUsername;", conn);
       SqlParameter accountUsernameParameter = new SqlParameter();
       accountUsernameParameter.ParameterName = "@AccountUsername";
       accountUsernameParameter.Value = username;
       cmd.Parameters.Add(accountUsernameParameter);
       rdr = cmd.ExecuteReader();
-
       int foundAccountId = -1;
-
       while(rdr.Read())
       {
         foundAccountId = rdr.GetInt32(0);
       }
-
       if (rdr != null)
       {
         rdr.Close();
@@ -281,57 +248,45 @@ namespace JobBoard
       }
       return foundAccountId;
     }
-
-    public void Update(string newFirstName, string newLastName, string newEmail, string newPhone, int newEducation, string newResume, string newUsername)
+    public void Update (string newFirstName, string newLastName, string newEmail, string newPhone, int newEducation, string newResume, string newUsername)
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr;
       conn.Open();
-
-      SqlCommand cmd = new SqlCommand("UPDATE accounts SET first_name = @NewFirstName, last_name = @NewLastName, email = @NewEmail, phone = @NewPhone, education = @NewEducation, resume = @NewResume, username = @NewUsername OUTPUT INSERTED.first_name, INSERTED.last_name, INSERTED.email, INSERTED.phone, INSERTED.education, INSERTED.resume, INSERTED.username WHERE id = @AccountId;", conn);
-
+      SqlCommand cmd = new SqlCommand ("UPDATE accounts SET first_name = @NewFirstName, last_name = @NewLastName, email = @NewEmail, phone = @NewPhone, education = @NewEducation, resume = @NewResume, username = @NewUsername OUTPUT INSERTED.first_name, INSERTED.last_name, INSERTED.email, INSERTED.phone, INSERTED.education, INSERTED.resume, INSERTED.username WHERE id = @AccountId;", conn);
       SqlParameter newFirstNameParameter = new SqlParameter();
       newFirstNameParameter.ParameterName = "@NewFirstName";
       newFirstNameParameter.Value = newFirstName.Trim();
       cmd.Parameters.Add(newFirstNameParameter);
-
       SqlParameter newLastNameParameter = new SqlParameter();
       newLastNameParameter.ParameterName = "@NewLastName";
       newLastNameParameter.Value = newLastName.Trim();
       cmd.Parameters.Add(newLastNameParameter);
-
       SqlParameter newEmailParameter = new SqlParameter();
       newEmailParameter.ParameterName = "@NewEmail";
       newEmailParameter.Value = newEmail.Trim();
       cmd.Parameters.Add(newEmailParameter);
-
       SqlParameter newPhoneParameter = new SqlParameter();
       newPhoneParameter.ParameterName = "@NewPhone";
       newPhoneParameter.Value = newPhone.Trim();
       cmd.Parameters.Add(newPhoneParameter);
-
       SqlParameter newEducationParameter = new SqlParameter();
       newEducationParameter.ParameterName = "@NewEducation";
       newEducationParameter.Value = newEducation;
       cmd.Parameters.Add(newEducationParameter);
-
       SqlParameter newResumeParameter = new SqlParameter();
       newResumeParameter.ParameterName = "@NewResume";
       newResumeParameter.Value = newResume.Trim();
       cmd.Parameters.Add(newResumeParameter);
-
       SqlParameter newUsernameParameter = new SqlParameter();
       newUsernameParameter.ParameterName = "@NewUsername";
       newUsernameParameter.Value = newUsername.Trim();
       cmd.Parameters.Add(newUsernameParameter);
-
       SqlParameter accountIdParameter = new SqlParameter();
       accountIdParameter.ParameterName = "@AccountId";
       accountIdParameter.Value = this.GetId();
       cmd.Parameters.Add(accountIdParameter);
-
       rdr = cmd.ExecuteReader();
-
       while(rdr.Read())
       {
         this._firstName = rdr.GetString(0);
@@ -342,38 +297,15 @@ namespace JobBoard
         this._resume = rdr.GetString(5);
         this._username = rdr.GetString(6);
       }
-
       if (rdr != null)
       {
         rdr.Close();
       }
-
       if (conn != null)
       {
         conn.Close();
       }
     }
-
-    public void DeleteOne()
-    {
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-
-      SqlCommand cmd = new SqlCommand("DELETE FROM accounts WHERE id = @AccountId;", conn);
-
-      SqlParameter accountIdParameter = new SqlParameter();
-      accountIdParameter.ParameterName = "@AccountId";
-      accountIdParameter.Value = this.GetId();
-
-      cmd.Parameters.Add(accountIdParameter);
-      cmd.ExecuteNonQuery();
-
-      if (conn != null)
-      {
-        conn.Close();
-      }
-    }
-
     public Dictionary<string, int> UniqueWordCount()
     {
       List<string> prepositions = new List<string>{"aboard", "about", "above", "across", "after", "against", "along", "amid", "among", "anti", "around", "as", "at", "before", "behind", "below", "beneath", "beside", "besides", "between", "beyond", "but", "by", "concerning", "considering", "despite", "down", "during", "except", "excepting", "excluding", "following", "for", "from", "in", "inside", "into", "like", "minus", "near", "of", "off", "on", "onto", "opposite", "outside", "over", "past", "per", "plus", "regarding", "round", "save", "since", "than", "through", "to", "toward", "towards", "underneath", "under", "unlike", "until", "up", "upon", "versus", "via", "with", "within", "without", "a", "an", "the"};
@@ -416,7 +348,6 @@ namespace JobBoard
 
       return items;
     }
-
     public Dictionary<string, int> CompoundWordCount()
     {
       List<string> prepositions = new List<string>{"aboard", "about", "above", "across", "after", "against", "along", "amid", "among", "anti", "around", "as", "at", "before", "behind", "below", "beneath", "beside", "besides", "between", "beyond", "but", "by", "concerning", "considering", "despite", "down", "during", "except", "excepting", "excluding", "following", "for", "from", "in", "inside", "into", "like", "minus", "near", "of", "off", "on", "onto", "opposite", "outside", "over", "past", "per", "plus", "regarding", "round", "save", "since", "than", "through", "to", "toward", "towards", "underneath", "under", "unlike", "until", "up", "upon", "versus", "via", "with", "within", "without", "a", "an", "the"};
@@ -427,7 +358,6 @@ namespace JobBoard
       string trimmedResume = Regex.Replace(backTrimmedResume, @" [\(]", " ");
       Regex noncharacter = new Regex(@"[^A-Za-z0-9+#., ]+");
       string mistranslatedCharsRemoved = noncharacter.Replace(trimmedResume, "");
-
       Regex whitespace = new Regex(@"\s+");
       string[] wordList = whitespace.Split(mistranslatedCharsRemoved);
       for(int i=0; i < wordList.Length-2; i++)
@@ -450,7 +380,6 @@ namespace JobBoard
       }
       return items;
     }
-
     public Dictionary<Job, int> GetRankedJobs()
     {
       Dictionary<string, int> resumeWords = this.UniqueWordCount();
@@ -483,7 +412,21 @@ namespace JobBoard
       }
       return rankedJobs;
     }
-
+    public void DeleteOne()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlCommand cmd = new SqlCommand("DELETE FROM accounts WHERE id = @AccountId;", conn);
+      SqlParameter accountIdParameter = new SqlParameter();
+      accountIdParameter.ParameterName = "@AccountId";
+      accountIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(accountIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
     public static void DeleteAll()
     {
      SqlConnection conn = DB.Connection();
