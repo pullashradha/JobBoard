@@ -1,8 +1,8 @@
-# Top Candidate Webpage
+# Top Candidate
 
 #### Team Project for Epicodus, 07/29/2016
 
-#### By Sami Al-Jamal & Shradha Pulla & Charlie Baxter & Charlie Ewel
+#### By Shradha Pulla, Charlie Baxter, Charlie Ewel & Sami Al-Jamal
 
 ## Description
 
@@ -121,19 +121,19 @@ Add "Top Candidate" site title to top left of navbar | --- | Refine & refactor a
 
 ## Presentation Notes
 
-- Why?
+* Why?
 	* Job boards present you with a ton of information and can be overwhelming.
 	* Many companies use software that takes a resume and scans it for key words.  These words can be in the actual description.
 	* Our project helps you tailor your resume to make it more appealing to employers, in terms of getting a specific job, applying at a certain company, or within a given industry.
 
-- Process
+* Process
 	* We rotated every day.
 	* Started every day with a standup to talk about issues we noticed from the previous day, and what we wanted to accomplish in the day ahead.
 	* Each pair worked on different documents and features to prevent merge conflicts and issues with the site not running in the way that the other pair expected.
 	* We kept an eye out for issues and let the team working on that feature know about it rather than going in and fixing it ourselves (divided responsibilities well).
 	* We focused first and foremost on getting a working MVP.  For new features, we decided to set a time limit to see how well we could get it working.  If it didn't work well enough, we moved on.
 
-- Challenges
+* Challenges
 	* Coming up with the right algorithm. Frequency of words isn't the best indication of what is a keyword in a resume or job posting.
 	* Maintaining a login session.  Our site doesn't currently do this.
 	* Deciding on the scope of the project.  Wordclouds!  APIs!  Webscrapers!
@@ -145,19 +145,19 @@ Contact Epicodus for support in running this program.
 
 ## Technologies Used
 
-* C#
-* Nancy
-* Razor
 * HTML
 * CSS
 * Bootstrap
+* Nancy
+* Razor
+* C#
 
 ## Links
 
-Git Hub Repository: https://github.com/SamiAljamal/Csharp_GroupProject
+Git Hub Repository: https://github.com/pullashradha/TopCandidate
 
 ## License
 
 *This software is licensed under the Microsoft ASP.NET license.*
 
-Copyright (c) 2016 Sami Al-Jamal & Shradha Pulla & Charlie Baxter & Charlie Ewel
+Copyright (c) 2016 Shradha Pulla, Charlie Baxter, Charlie Ewel & Sami Al-Jamal
