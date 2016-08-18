@@ -97,7 +97,7 @@ No known bugs.
 
 ## Specifications
 
-The program should ... | Example Input | Example Output
+The program should... | Example Input | Example Output
 ----- | ----- | -----
 Have CRUD functionality for an account | --- | ---
 Have CRUD functionality for a job listing | --- | ---
